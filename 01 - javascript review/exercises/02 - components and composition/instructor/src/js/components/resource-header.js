@@ -11,7 +11,10 @@ template.innerHTML = `
         </div>
     </header>
 `
-
+// N.B. it is a better pattern to create & attach to the shadow root in the constructor,
+//      rather than the connectedCallback (i.e. waiting until the component is loaded to the DOM).
+//      *this specific* example does the shadow root logic in the connectedCallback simply to keep it concise and legible
+//      as an introductory example.
 class ResourceHeader extends HTMLElement {
     connectedCallback() {  // i.e. "at the end of *loading this into* the DOM, 
         this.attachShadow({mode: 'open'})  // create a shadow root; make it accessible outside this component
