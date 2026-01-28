@@ -1,3 +1,6 @@
+// Here, we'll simply display data - when we're finished writing it, note how it contains *no* logic
+// related to listening for / handling incoming events, etc. -- its job is ONLY to display stored data if that data exists!
+
 const template = document.createElement('template');
 // TODO: Update the template to support dynamic resource details
 template.innerHTML = `

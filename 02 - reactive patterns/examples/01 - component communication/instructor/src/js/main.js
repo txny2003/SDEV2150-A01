@@ -52,6 +52,9 @@ const resultData = [
   },
 ];
 
+// Here, we'll place our logic layer, or "mailperson" - *outside of* component definition -
+// which will listen for the emitted click event, and pass on data to the detail component.
+
 // TODO: Pass data to resource-results component
 
 // TODO: Listen for resourceSelected event and update resource-details component
