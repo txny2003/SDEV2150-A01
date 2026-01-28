@@ -60,3 +60,7 @@ const resultsComponent = document.querySelector('resource-results');
 resultsComponent.results = resultData;  // passes the data to ResourceResults.results setter, since we made the array itself private
 
 // TODO: Listen for resourceSelected event and update resource-details component
+const detailsComponent = document.querySelector('resource-details');
+resultsComponent.addEventListener('resource-selected', (event) => {
+  detailsComponent.resource = event.detail.result;
+});
