@@ -44,8 +44,27 @@ class ResourceResults extends HTMLElement {
 
   // TODO: Add an event handler method for result selection
   _handleResultClick(event) {
-    // Let's leave this empty for now,
-    // and first deal with where it needs to be called elsewhere in our object for event-driven behaviour.
+    const button = event.target.closest('button[data-id]');
+    if (button) {
+      // snipe for the specific result row that got clicked.
+      // -> this is why we always implement a unique identifier for each element in a series!
+      const resultID = button.getAttribute('data-id');
+      const result = this.#results.find(r => r.id === resultID);  // note that we're finding the data object from the array, not the UI row!
+
+      // cook up a custom event. docs: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/
+      const resultSelectedEvent = new CustomEvent(
+        'resource-selected',  // *we* get to decide the event name!
+        {
+          detail: { result },  // don't pre-filter the data item. Send the *whole* object; let the receiving component decide what's relevant. 
+          bubbles: true,       // if true, parent node / document can listen for event without knowing about & wiring together sender and receiever components
+          composed: true,      // if true, events can cross shadow DOM boundary
+        }
+      );
+      
+        // broadcast the event to the current target (in this case, a ResourceResults component instance)
+        this.dispatchEvent(selectedEvent);
+      
+    }
   }
 
   connectedCallback() {  // <- when the component loads/attaches into the DOM...
