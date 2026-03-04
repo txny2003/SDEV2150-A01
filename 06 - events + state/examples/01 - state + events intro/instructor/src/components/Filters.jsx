@@ -13,6 +13,14 @@ export default function Filters() {
   const [openNow, setOpenNow] = useState(false)
   const [virtual, setVirtual] = useState(false)
 
+  function resetForm() {
+    // here, I'm just looking to restore all stateful elements to their default values
+    setSearchTerm('')
+    setSelectedCategories([])
+    setOpenNow(false)
+    setVirtual(false)
+  }
+
   function toggleCategory(category) {
     // when I get a category, that means it's been clicked.
     // 1.   look in my stateful array to see if that category label is already there.
@@ -122,6 +130,7 @@ export default function Filters() {
             <button
               type="button"
               className="rounded border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+              onClick={() => resetForm()}
             >
               Reset
             </button>
