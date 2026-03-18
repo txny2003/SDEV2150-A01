@@ -122,12 +122,13 @@ It will use the same hooks and props you already have in the app. For now, creat
 
 ```js
 // src/pages/ResourceDirectoryPage.jsx
-export default ResourceDirectoryPage = () => {
+const ResourceDirectoryPage = () => {
   return (
-    <h1>Resource Directory Page</h1>
+    <h1>Admin Page</h1>
   );
 };
 
+export default ResourceDirectoryPage
 ```
 ### AdminPage
 
@@ -141,11 +142,13 @@ For now, keep the layout simple and create a placeholder component:
 
 ```jsx
 // src/pages/AdminPage.jsx
-export default AdminPage = () => {
+const AdminPage = () => {
   return (
     <h1>Admin Page</h1>
   );
 };
+
+export default AdminPage
 ```
 
 ---
