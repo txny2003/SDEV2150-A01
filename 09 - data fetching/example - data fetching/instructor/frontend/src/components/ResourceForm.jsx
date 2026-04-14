@@ -1,37 +1,16 @@
 import { useState } from 'react';
+import { Form, useNavigate } from 'react-router';
 
-export default function ResourceForm({ initialData, isEditing, onSubmit, onReset }) {
+export default function ResourceForm({ initialData, isEditing, isSubmitting }) {
   const [formData, setFormData] = useState(initialData);
+  const navigate = useNavigate();
+
+  function handleChange(e) {
+    // generic handler for every field type
+  }
 
   return (
-    <form onSubmit={(e) => onSubmit(e, formData)} className="space-y-4">
-      <div className="space-y-1">
-        <label className="block text-sm font-medium">Title</label>
-        <input
-          className="input input-bordered w-full"
-          value={formData.title}
-          onChange={(e) =>
-            setFormData({ ...formData, title: e.target.value })
-          }
-        />
-      </div>
-
-      <div className="flex gap-2">
-        <button
-          type="button"
-          className="rounded border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
-          onClick={() => {
-            setFormData(initialData);
-            onReset();
-          }}
-        >
-          Reset
-        </button>
-
-        <button type="submit" className="rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700">
-          {isEditing ? 'Update Resource' : 'Add Resource'}
-        </button>
-      </div>
-    </form>
+    <Form method="post" className="space-y-4">
+    </Form>
   );
 }
